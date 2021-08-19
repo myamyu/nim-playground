@@ -1,5 +1,10 @@
-# This is just an example to get you started. A typical binary package
-# uses this file as the main entry point of the application.
+#[
+  ハローって言う
+]#
+proc sayHello(name:string) =
+  echo "Hello, ", name, "!!"
 
 when isMainModule:
-  echo("Hello, World!")
+  echo "your name:"
+  var input = stdin.readLine
+  sayHello(if input == "": "World" else: input)
