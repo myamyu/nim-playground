@@ -6,3 +6,4 @@ nimで遊んでみる
 - [hello](./hello/) はろーわーるど
 - [fizzbuzz](./fizzbuzz/) FizzBuzzするやつ
 - [nim-de-test](./nim-de-test/) nimでunit testしてみる
+- [threads](./threads/) マルチスレッド
