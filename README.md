@@ -7,3 +7,4 @@ nimで遊んでみる
 - [fizzbuzz](./fizzbuzz/) FizzBuzzするやつ
 - [nim-de-test](./nim-de-test/) nimでunit testしてみる
 - [threads](./threads/) マルチスレッド
+- [apireq](./apireq/) APIにリクエストしてみる
