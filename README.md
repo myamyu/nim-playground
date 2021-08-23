@@ -8,3 +8,4 @@ nimで遊んでみる
 - [nim-de-test](./nim-de-test/) nimでunit testしてみる
 - [threads](./threads/) マルチスレッド
 - [apireq](./apireq/) APIにリクエストしてみる
+- [logloglog](./logloglog/) loggingを使ってみる
