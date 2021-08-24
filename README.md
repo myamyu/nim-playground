@@ -9,3 +9,4 @@ nimで遊んでみる
 - [threads](./threads/) マルチスレッド
 - [apireq](./apireq/) APIにリクエストしてみる
 - [logloglog](./logloglog/) loggingを使ってみる
+- [tmpl](./tmpl/) templateを使ってみる
