@@ -1,5 +1,5 @@
 import webdriver
-import logging, strformat
+import logging, strformat, options
 
 const fmtStr = "$date $time - [$levelname] "
 let logger = newConsoleLogger(fmtStr=fmtStr)
@@ -15,9 +15,10 @@ proc main() =
     let session = driver.createSession()
     info("navigate to hotpepper.")
     session.navigate("https://www.hotpepper.jp/SA11/lst")
-    let safeElem = session.findElement("h1")
-    echo $safeElem
-    # TODO どうやって要素の情報を得るのか・・・？うまくいかん。。。
+    let safeElem = session.findElement(".shopDetailStoreName")
+    let elem = safeElem.get()
+    info(fmt"最初のお店:{elem.getText()}")
+
     defer:
       session.close()
       info("session closed")
