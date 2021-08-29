@@ -13,3 +13,6 @@ nimで遊んでみる
 - web server
   - [標準版](./websv2/) 標準だけでweb server
   - [jester版](./websv/) Jester使ったほうが楽
+- web driver
+  - [webdriver使う](./webdr/) webdriverを使ってみる
+  - [seleniumを操る](./selenium/) 起動しているseleniumにnimでアクセス
