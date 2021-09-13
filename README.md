@@ -5,6 +5,7 @@ nimで遊んでみる
 
 - [hello](./hello/) はろーわーるど
 - [fizzbuzz](./fizzbuzz/) FizzBuzzするやつ
+- [fizzbuzz2](./fizzbuzz2/) FizzBuzzするやつ（Twitterで見つけたやつの検証）
 - [nim-de-test](./nim-de-test/) nimでunit testしてみる
 - [threads](./threads/) マルチスレッド
 - [apireq](./apireq/) APIにリクエストしてみる
