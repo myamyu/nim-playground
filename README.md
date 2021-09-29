@@ -17,3 +17,4 @@ nimで遊んでみる
 - web driver
   - [webdriver使う](./webdr/) webdriverを使ってみる
   - [seleniumを操る](./selenium/) 起動しているseleniumにnimでアクセス
+  - [seleniumを操る2](./selenium2/) 起動しているseleniumにnimでアクセス(selenimumを使った版)
