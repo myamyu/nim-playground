@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  selenium-hub:
+    image: selenium/hub:3.141.59-20210830
+    container_name: selenium-hub
+    ports:
+    - 4444:4444
+    environment:
+    - GRID_MAX_SESSION=10
+
+  chrome:
+    image: selenium/node-chrome:3.141.59-20210830
+    container_name: selenium-chrome
+    shm_size: 2gb
+    depends_on:
+    - selenium-hub
+    environment:
+    - HUB_HOST=selenium-hub
+    - HUB_PORT=4444
+    - NODE_MAX_SESSION=5

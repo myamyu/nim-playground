@@ -18,3 +18,4 @@ nimで遊んでみる
   - [webdriver使う](./webdr/) webdriverを使ってみる
   - [seleniumを操る](./selenium/) 起動しているseleniumにnimでアクセス
   - [seleniumを操る2](./selenium2/) 起動しているseleniumにnimでアクセス(selenimumを使った版)
+  - [seleniumを操る3](./selenium3/) 起動しているseleniumにnimでアクセス(haloniumを使った版)
