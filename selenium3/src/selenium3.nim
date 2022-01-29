@@ -1,14 +1,15 @@
 import halonium, logging, strformat, os, options
 
 const fmtStr = "$date $time - [$levelname] "
-addHandler(newConsoleLogger(fmtStr=fmtStr))
+addHandler(newConsoleLogger(fmtStr = fmtStr))
 
 proc main() =
   info("start scraping")
   defer:
     info("end scraping.")
 
-  var session = createRemoteSession(browser=Chrome, url="http://localhost:4444/wd/hub")
+  var session = createRemoteSession(browser = Chrome,
+      url = "http://localhost:4444/wd/hub")
 
   try:
     info("navigate to yahoo!")
@@ -34,7 +35,7 @@ proc main() =
       let h3 = link.findElement("h3").get()
       let linkTitle = h3.text()
       info(&"No.{i} {linkTitle} {linkUrl}")
-      urls.add(linkUrl) 
+      urls.add(linkUrl)
 
     for i, url in urls:
       info(&"Navigate to [{url}] ...")

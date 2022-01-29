@@ -3,7 +3,8 @@ import httpclient, uri, json, strformat
 type SessionId = string
 
 const driverUrl = "http://localhost:4444/wd/hub".parseUri()
-let capabilities = %*{"desiredCapabilities":{"browserName":"firefox"},"requiredCapabilities":{}}
+let capabilities = %*{"desiredCapabilities": {"browserName": "firefox"},
+    "requiredCapabilities": {}}
 let client = newHttpClient()
 
 #[

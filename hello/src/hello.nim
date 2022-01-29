@@ -1,7 +1,7 @@
 #[
   ハローって言う
 ]#
-proc sayHello(name:string) =
+proc sayHello(name: string) =
   echo "Hello, ", name, "!!"
 
 when isMainModule:

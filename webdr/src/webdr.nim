@@ -2,7 +2,7 @@ import webdriver
 import logging, strformat, options
 
 const fmtStr = "$date $time - [$levelname] "
-let logger = newConsoleLogger(fmtStr=fmtStr)
+let logger = newConsoleLogger(fmtStr = fmtStr)
 addHandler(logger)
 
 proc main() =

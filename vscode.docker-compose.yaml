@@ -2,5 +2,7 @@ version: '3'
 
 services:
   nim-dev:
-    container_name: nim-dev
-    image: nimlang/nim:1.6.2-ubuntu
+    build:
+      context: .
+      dockerfile: ./vscode.dockerfile
+    image: nim-dev

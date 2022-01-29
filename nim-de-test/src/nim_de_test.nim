@@ -1,5 +1,5 @@
 
-proc sum*(a:int, b:int):int =
+proc sum*(a: int, b: int): int =
   result = a + b
 
 when isMainModule:

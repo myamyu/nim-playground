@@ -19,7 +19,7 @@ type YahooTextAPIClient* = ref object
 #[
   テキストAPIのクライアントを生成
 ]#
-proc newYahooTextAPIClient*(appID: string):YahooTextAPIClient =
+proc newYahooTextAPIClient*(appID: string): YahooTextAPIClient =
   return YahooTextAPIClient(appID: appID)
 
 #[
@@ -45,7 +45,7 @@ proc conversion*(c: YahooTextAPIClient, sentence: string): RespConversion =
     "appid": c.appID,
     "sentence": sentence,
   })
-  
+
   let req = newHttpClient()
   let resp = req.get(url)
   if resp.code() != Http200:

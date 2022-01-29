@@ -3,7 +3,7 @@ import logging, strformat
 import system/ansi_c
 
 const fmtStr = "$date $time - [$levelname] "
-let logger = newConsoleLogger(fmtStr=fmtStr)
+let logger = newConsoleLogger(fmtStr = fmtStr)
 
 addHandler(logger)
 
@@ -25,7 +25,7 @@ proc main() =
       "Hello, World!",
       headers.newHttpHeaders()
     )
-  
+
   # graceful shutdown
   proc shutdown(fd: AsyncFD): bool =
     info("Server Shutdown on SIGINT")

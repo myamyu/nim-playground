@@ -3,7 +3,7 @@ from math import gcd
 
 proc `$`(n: int): string =
   ## 数値を文字列にするときにFizzBuzzをかける
-  const tbl = {3:"Fizz", 5:"Buzz", 15:"FizzBuzz"}.toTable()
+  const tbl = {3: "Fizz", 5: "Buzz", 15: "FizzBuzz"}.toTable()
   let v = n.gcd(15)
   return if v in tbl: tbl[v] else: strutils.intToStr(n)
 
