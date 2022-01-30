@@ -29,7 +29,7 @@ let src = "{buff}"
 echo(src)
 """)
 
-when isMainModule:
+expandMacros:
   html:
     head:
       title "hoge"
