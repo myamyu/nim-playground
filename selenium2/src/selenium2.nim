@@ -1,4 +1,5 @@
 import selenimum, logging, strformat, os
+import macros
 
 const fmtStr = "$date $time - [$levelname] "
 addHandler(newConsoleLogger(fmtStr = fmtStr))
@@ -8,48 +9,37 @@ proc main() =
   defer:
     info("end scraping.")
 
-  let
-    driver = newSeleniumWebDriver()
-    session = driver.newSession()
+  expandMacros:
+    selenium "http://selenium-hub:4444/wd/hub":
+      chrome:
+        info("navigate to yahoo!")
+        navigateTo "https://www.yahoo.co.jp/"
+        let searchWord = "フィロソフィーのダンス"
+        setValue "form input", searchWord
+        info("search")
+        click "form button"
+        sleep(300)
+        info(&"Page Title{getTitle()}")
 
-  try:
-    info("navigate to yahoo!")
-    session.navigateTo("https://www.yahoo.co.jp/")
+        const outputPath = "output"
+        screenshot &"{outputPath}/searchResults.png"
+        info("save results screenshot")
 
-    let elem = session.findElement(query = "form input")
-    let searchWord = "フィロソフィーのダンス"
-    elem.setValue(searchWord)
+        var urls: seq[string] = @[]
+        elements "a.sw-Card__titleInner":
+          let linkUrl = element.getAttributeValue("href")
+          let linkTitle = element.getText("h3")
+          info(&"No.{index} {linkTitle} {linkUrl}")
+          urls.add(linkUrl)
 
-    info("search")
-    session.findElement(query = "form button").click()
-    sleep(300)
-    info(&"Page Title{session.getTitle()}")
+        for i, url in urls:
+          info(&"Navigate to [{url}] ...")
+          navigateTo url
+          info(&"Page Title:[{getTitle()}]")
+          sleep(1500)
+          let pngFile = &"{outputPath}/result-{$i}.png"
+          screenshot pngFile
+          info(&"save to [{pngFile}]")
 
-    const outputPath = "output"
-    session.saveScreenshot(&"{outputPath}/searchResults.png")
-    info("save results screenshot")
-
-    let links = session.findElements(query = "a.sw-Card__titleInner")
-    var urls: seq[string] = @[]
-    for i, link in links:
-      let linkUrl = link.getAttributeValue("href")
-      let h3 = link.findElement(query = "h3")
-      let linkTitle = h3.getText()
-      info(&"No.{i} {linkTitle} {linkUrl}")
-      urls.add(linkUrl)
-
-    for i, url in urls:
-      info(&"Navigate to [{url}] ...")
-      session.navigateTo(url)
-      info(&"Page Title:[{session.getTitle()}]")
-      sleep(1500)
-      let pngFile = &"{outputPath}/result-{$i}.png"
-      session.saveScreenshot(pngFile)
-      info(&"save to [{pngFile}]")
-
-  except Exception as e:
-    error(&"ERROR!! {e.msg}\n{e.getStackTrace()}")
-  finally:
-    session.deleteSession()
 when isMainModule:
   main()

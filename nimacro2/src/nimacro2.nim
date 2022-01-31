@@ -5,14 +5,14 @@ type Hoge = ref object
   foo: string
   bar: string
 
-macro hoge(body: untyped): untyped =
+macro hoge1(body: untyped): untyped =
   let hogehoge = newIdentNode("hogehoge")
   quote do:
     block:
       var `hogehoge` = Hoge()
       `body`
 
-macro hoge2(h: Hoge, body: untyped): untyped =
+macro hoge(h: Hoge, body: untyped): untyped =
   let hogehoge = newIdentNode("hogehoge")
   quote do:
     block:
@@ -25,36 +25,39 @@ macro hogeAttr(name: string, val: string): untyped =
   quote do:
     `hogehoge`.`attr` = `val`
 
-macro fuga(head: untyped): untyped =
-  let val = newLit(strVal(head))
+macro fuga(val: string): untyped =
   quote do:
     hogeAttr "fuga", `val`
 
-macro foo(head: untyped): untyped =
-  let val = newLit(strVal(head))
+macro foo(val: string): untyped =
   quote do:
     hogeAttr "foo", `val`
 
-macro bar(head: untyped): untyped =
-  let val = newLit(strVal(head))
+macro bar(val: string): untyped =
   quote do:
     hogeAttr "bar", `val`
 
+macro getFuga(): string =
+  let hogehoge = newIdentNode("hogehoge")
+  quote do:
+    `hogehoge`.fuga
+
 expandMacros:
-  hoge:
-    fuga nyaaaaaaa
-    foo nyooooooooooo
+  hoge1:
+    fuga "nyaaaaaaaaaaaa"
+    foo "nyoooooooooo"
     bar "ほげほげ"
-    echo hogehoge.fuga
+    let fugafuga = getFuga()
+    echo fugafuga
     echo hogehoge.foo
     echo hogehoge.bar
 
 var hg = Hoge()
 hg.fuga = "あああああ"
 expandMacros:
-  hoge2 hg:
+  hoge hg:
     echo hogehoge.fuga
-    fuga nyaa
+    fuga "nyaa"
     echo hogehoge.fuga
 
 dumpAstGen:

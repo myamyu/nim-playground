@@ -12,4 +12,4 @@ bin           = @["selenium2"]
 # Dependencies
 
 requires "nim >= 1.4.8"
-requires "selenimum >= 0.1.2"
+requires "selenimum >= 0.2.0"
